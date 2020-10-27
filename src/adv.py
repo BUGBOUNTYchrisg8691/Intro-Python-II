@@ -38,6 +38,11 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+class Player:
+    def __init__(self, location):
+        self.current_location = room[location]
+
+p1 = Player("outside")
 
 # Write a loop that:
 #
@@ -49,3 +54,45 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+while True:
+    print(p1.current_location.name)
+    print(p1.current_location.description)
+    move = input("Go (N)orth, (S)outh, (E)ast or (W)est? ")
+    print("----------------------------------")
+    if move.lower() == 'n':
+        try:
+            p1.current_location = p1.current_location.n_to
+            print("Now in ", p1.current_location)
+            print("----------------------------------")
+        except AttributeError:
+            print("Nowhere to go that direction")
+            print("Still in ", p1.current_location)
+            print("----------------------------------")
+    if move.lower() == 's':
+        try:
+            p1.current_location = p1.current_location.s_to
+            print("Now in ", p1.current_location)
+            print("----------------------------------")
+        except AttributeError:
+            print("Nowhere to go that direction")
+            print("Still in ", p1.current_location)
+            print("----------------------------------")
+    if move.lower() == 'e':
+        try:
+            p1.current_location = p1.current_location.e_to
+            print("Now in ", p1.current_location)
+            print("----------------------------------")
+        except AttributeError:
+            print("Nowhere to go that direction")
+            print("Still in ", p1.current_location)
+            print("----------------------------------")
+    if move.lower() == 'w':
+        try:
+            p1.current_location = p1.current_location.w_to
+            print("Now in ", p1.current_location)
+            print("----------------------------------")
+        except AttributeError:
+            print("Nowhere to go that direction")
+            print("Still in ", p1.current_location)
+            print("----------------------------------")
